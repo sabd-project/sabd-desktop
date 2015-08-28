@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/sabd-project/sabd-desktop/issues"
   },
-  "homepage": "https://github.com/sabd-project/sabd-desktop"
+  "homepage": "https://github.com/sabd-project/sabd-desktop",
+  "devDependencies": {
+    "electron-prebuilt": "^0.31.1"
+  }
 }

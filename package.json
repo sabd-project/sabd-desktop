@@ -1,9 +1,10 @@
 {
   "name": "sabd-desktop",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Desktop Based Sabd Application",
   "main": "main.js",
   "scripts": {
+    "start": "electron main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,6 @@
   },
   "homepage": "https://github.com/sabd-project/sabd-desktop",
   "devDependencies": {
-    "electron-prebuilt": "^0.31.1"
+    "electron-prebuilt": "^0.36.0"
   }
 }

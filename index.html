@@ -2,12 +2,30 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Sabd Desktop</title>
+    <link href="src/css/photon.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Hello World!</h1>
-We are using node <script>document.write(process.versions.node)</script>,
-Chromium <script>document.write(process.versions.chrome)</script>,
-and Electron <script>document.write(process.versions.electron)</script>.
+<div class="window">
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Sabd</h1>
+    </header>
+    <div class="window-content">
+        <div class="pane-group">
+            <div class="pane-sm sidebar">...</div>
+            <div class="pane">
+                We are using node
+                <script>document.write(process.versions.node)</script>
+                ,
+                Chromium
+                <script>document.write(process.versions.chrome)</script>
+                ,
+                and Electron
+                <script>document.write(process.versions.electron)</script>
+                .
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

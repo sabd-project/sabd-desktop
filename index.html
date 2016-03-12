@@ -11,10 +11,49 @@
 <div class="window">
     <header class="toolbar toolbar-header">
         <h1 class="title">Sabd</h1>
+        <div class="toolbar-actions">
+            <div class="btn-group">
+                <button class="btn btn-default">
+                    <span class="icon icon-home"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="icon icon-folder"></span>
+                </button>
+                <button class="btn btn-default active">
+                    <span class="icon icon-cloud"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="icon icon-popup"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="icon icon-shuffle"></span>
+                </button>
+            </div>
+
+            <button class="btn btn-default">
+                <span class="icon icon-home icon-text"></span>
+                Filters
+            </button>
+
+            <button class="btn btn-default btn-dropdown pull-right">
+                <span class="icon icon-megaphone"></span>
+            </button>
+        </div>
     </header>
     <div class="window-content">
         <div class="pane-group">
-            <div class="pane-sm sidebar">...</div>
+            <div class="pane-sm sidebar">
+
+                <form>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-form btn-primary">Search</button>
+                    </div>
+                    </form>
+            </div>
             <div class="pane">
                 We are using node
                 <script>document.write(process.versions.node)</script>

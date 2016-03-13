@@ -19,6 +19,7 @@ Electron based Gurmukhi search application
 - [ ] Autoupdaes
 - [ ] Ping data back to Keen for platform usage monitoring
 - [ ] Internationalisation
+- [ ] Get icons created for distribution
 
 ## HTTP API
 Web server sits on port 9100 (may need to detect if busy and pick another)
@@ -27,11 +28,11 @@ Web server sits on port 9100 (may need to detect if busy and pick another)
 
 Search for a sabad by the following criteria and return an array of Sabd id's and line in gurmukhi/english
 
-type | explained
-:- | -:
-first-letter | first letter gurmukhi search
-gurmukhi | Gurmukhi only search
-english | search english translations
+| type | explained |
+| :--- | ---: |
+| first-letter | first letter gurmukhi search |
+| gurmukhi | Gurmukhi only search |
+| english | search english translations |
 
 eg
 ```javascript

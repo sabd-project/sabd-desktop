@@ -10,6 +10,9 @@ const BrowserWindow = electron.BrowserWindow;
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+// Start server
+require('./server');
+
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({

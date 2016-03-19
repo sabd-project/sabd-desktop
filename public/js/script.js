@@ -13,12 +13,4 @@ const ESC_KEY = 27;
 
 function startup(){
     "use strict";
-
-    // kick things off by creating the `App`
-    new app.AppView();
-
-    var Sambd = Backbone.Collection.extend({
-        url: '/sabd'
-    });
-
 }

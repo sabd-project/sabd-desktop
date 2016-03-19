@@ -1,19 +1,25 @@
 'use strict';
-const PORT = 9100;
+const PORT = 9101;
 
 var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+    res.send('Api for Sabd Desktop');
 });
 
 app.get('/search/:type/:query', function (req, res) {
 
 
-    res.send('Hello World!' + req.params.type);
+    res.send('searching: ' + req.params.type + ' ' + req.params.query);
+});
+
+app.get('/sabd/:id', function (req, res) {
+
+
+    res.send('Get Sabd ' + req.params.id);
 });
 
 app.listen(PORT, function () {
-    console.log('Example app listening on TCP:' + PORT);
+    console.log('Sabd REST API listening on TCP:' + PORT);
 });

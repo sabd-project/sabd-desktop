@@ -4,7 +4,8 @@ const PORT = 9102;
 var express = require('express');
 var app = express();
 
-var sabd = require('./models/sabd');
+var sabd = require('./models/sabd')();
+console.log(JSON.stringify(sabd));
 
 
 app.get('/', function (req, res) {
@@ -25,17 +26,17 @@ app.get('/search/:type/:query', function (req, res) {
         res.status(400).json(error);
     }
 
-    //execute the search
-    sabd.search(req.params.type, req.params.query)
-        .then(
-            function (output) {
-                res.json(output);
-            }
-        )
-        .catch(
-            function (err) {
-                res.status(400).json({'search error': JSON.stringify(err)})
-            });
+    // //execute the search
+    // sabd.searchSabd(req.params.type, req.params.query)
+    //     .then(
+    //         function (output) {
+    //             res.json(output);
+    //         }
+    //     )
+    //     .catch(
+    //         function (err) {
+    //             res.status(400).json({'search error': JSON.stringify(err)})
+    //         });
 
 });
 

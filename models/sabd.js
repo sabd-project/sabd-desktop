@@ -2,20 +2,19 @@
 var file = '../data/iGurbani.sqlite';
 var sqlite3 = require("sqlite3").verbose();
 
-var sabd = sabd || {};
 var db;
 
-module.exports = exports = createSabd;
+module.exports = Sabd;
 
-function createSabd() {
-    console.log('sat');
-    db = new sqlite3.Database(file);
-
-    console.log(db);
-    return sabd;
+function Sabd(vari) {
+    console.log( vari);
+    // db = new sqlite3.Database(file);
+    //
+    // console.log(db);
+    return 'vaheguru';
 }
 
-exports.search = function (type, query) {
+Sabd.prototype.searchSabd = function (type, query) {
 
     return new Promise(function (fulfill, reject) {
 

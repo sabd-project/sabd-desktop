@@ -1,19 +1,40 @@
 "use strict";
-var file = '../test.db';
-
+var file = '../data/iGurbani.sqlite';
 var sqlite3 = require("sqlite3").verbose();
 
-var db = new sqlite3.Database(file);
+var sabd = sabd || {};
+var db;
 
+module.exports = exports = createSabd;
 
-module.exports.search = function (type, query) {
+function createSabd() {
+    console.log('sat');
+    db = new sqlite3.Database(file);
 
-    console.log({'sat': query});
-    return {'sat': query};
-    return {type: query};
+    console.log(db);
+    return sabd;
 }
 
-db.close();
+exports.search = function (type, query) {
+
+    return new Promise(function (fulfill, reject) {
+
+        db.all('SELECT * FROM shabad where shabad_no=22', function (err, rows) {
+            if (err) {
+                console.error(err);
+                closeDb();
+                reject(err);
+            }
+            closeDb();
+            fulfill(rows);
+        });
+    });
+}
+
+function closeDb() {
+    console.log("closeDb");
+    db.close();
+}
 
 
 // // Create new comment in your database and return its id

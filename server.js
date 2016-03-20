@@ -1,24 +1,42 @@
 'use strict';
-const PORT = 9101;
+const PORT = 9102;
 
 var express = require('express');
 var app = express();
 
-var sabd = 'models/sabd.js';
+var sabd = require('./models/sabd');
 
 
 app.get('/', function (req, res) {
     res.send('Api for Sabd Desktop');
 });
 
+/**
+ * search for a sabd
+ */
 app.get('/search/:type/:query', function (req, res) {
 
+    console.log('Searching for', [req.params.type, req.params.query]);
 
-    var output = sabd.search(req.params.type, req.params.query);
+    //validate search types
+    let validSearchTypes = ['fls', 'flsa', 'gurmukhi', 'english'];
+    if (validSearchTypes.indexOf(req.params.type) === -1) {
+        let error = {"error": "not a valid search type: " + req.params.type};
+        res.status(400).json(error);
+    }
 
-    console.log(output);
-    //var output={'sat':'sri'};
-    res.send(JSON.stringify(output));
+    //execute the search
+    sabd.search(req.params.type, req.params.query)
+        .then(
+            function (output) {
+                res.json(output);
+            }
+        )
+        .catch(
+            function (err) {
+                res.status(400).json({'search error': JSON.stringify(err)})
+            });
+
 });
 
 app.get('/sabd/:id', function (req, res) {

@@ -54,3 +54,4 @@ eg
 
 Get a particular sabd in JSON for rendering 
 
+ curl localhost:9102/search/fls/hjkk

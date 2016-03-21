@@ -4,17 +4,20 @@ var sqlite3 = require("sqlite3").verbose();
 
 var db;
 
-module.exports = Sabd;
+/**
+ * constuctor
+ * @param name
+ */
+var sabd = function (name) {
+    this.name = name;
+};
 
-function Sabd(vari) {
-    console.log( vari);
-    // db = new sqlite3.Database(file);
-    //
-    // console.log(db);
-    return 'vaheguru';
+function openDb() {
+    console.log("closeDb");
+    db.close();
 }
 
-Sabd.prototype.searchSabd = function (type, query) {
+sabd.prototype.searchSabd = function (type, query) {
 
     return new Promise(function (fulfill, reject) {
 
@@ -34,6 +37,8 @@ function closeDb() {
     console.log("closeDb");
     db.close();
 }
+
+module.exports = sabd;
 
 
 // // Create new comment in your database and return its id

@@ -1,12 +1,13 @@
 'use strict';
 const PORT = 9102;
 
+//http://timjrobinson.com/how-to-structure-your-nodejs-models-2/
+
 var express = require('express');
 var app = express();
 
-var sabd = require('./models/sabd')();
-console.log(JSON.stringify(sabd));
-
+var sabd = require('./models/sabd');
+var Sabd=new sabd();
 
 app.get('/', function (req, res) {
     res.send('Api for Sabd Desktop');
@@ -26,17 +27,19 @@ app.get('/search/:type/:query', function (req, res) {
         res.status(400).json(error);
     }
 
-    // //execute the search
-    // sabd.searchSabd(req.params.type, req.params.query)
-    //     .then(
-    //         function (output) {
-    //             res.json(output);
-    //         }
-    //     )
-    //     .catch(
-    //         function (err) {
-    //             res.status(400).json({'search error': JSON.stringify(err)})
-    //         });
+    console.log(sabd);
+
+    //execute the search
+    sabd.searchSabd(req.params.type, req.params.query)
+        .then(
+            function (output) {
+                res.json(output);
+            }
+        )
+        .catch(
+            function (err) {
+                res.status(400).json({'search error': JSON.stringify(err)})
+            });
 
 });
 

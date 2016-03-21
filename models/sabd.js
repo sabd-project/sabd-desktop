@@ -1,71 +1,36 @@
 "use strict";
-var file = '../data/iGurbani.sqlite';
-var sqlite3 = require("sqlite3").verbose();
-
-var db;
-
 /**
- * constuctor
- * @param name
+ * constructor
+ * inject in db
  */
-var sabd = function (name) {
-    this.name = name;
-};
-
-function openDb() {
-    console.log("closeDb");
-    db.close();
+function Sabd() {
+    var db;
 }
 
-sabd.prototype.searchSabd = function (type, query) {
+Sabd.prototype.search = function (type, query) {
+    let searchAsciiCodes = '';
+
+    for (let i = 0, len = query.length; i < len; i++) {
+        let tmp = query.charCodeAt(i);
+        if (tmp < 100) { //0 pad numbers less than 100
+            tmp = '0' + tmp
+        }
+        searchAsciiCodes += tmp + ',';
+    }
+    searchAsciiCodes = searchAsciiCodes.substr(0, searchAsciiCodes.length - 1) + '%';  //strip trailing comma and add a %
+
+    var db = this.db;
+    var sql = "SELECT _id, shabad_no, source_id, ang_id, writer_id, raag_id, gurmukhi, english_ssk, transliteration " +
+        "FROM shabad where first_ltr_start like ?";
 
     return new Promise(function (fulfill, reject) {
-
-        db.all('SELECT * FROM shabad where shabad_no=22', function (err, rows) {
+        db.all(sql, searchAsciiCodes, function (err, rows) {
             if (err) {
-                console.error(err);
-                closeDb();
                 reject(err);
             }
-            closeDb();
             fulfill(rows);
         });
     });
 }
 
-function closeDb() {
-    console.log("closeDb");
-    db.close();
-}
-
-module.exports = sabd;
-
-
-// // Create new comment in your database and return its id
-// exports.create = function(user, text, cb) {
-//     var comment = {
-//         user: user,
-//         text: text,
-//         date: new Date().toString()
-//     }
-//
-//     db.save(comment, cb)
-// }
-//
-// // Get a particular comment
-// exports.get = function(id, cb) {
-//     db.fetch({id:id}, function(err, docs) {
-//         if (err) return cb(err)
-//         cb(null, docs[0])
-//     })
-// }
-//
-// // Get all comments
-// exports.all = function(cb) {
-//     db.fetch({}, cb)
-// }
-//
-// // Get all comments by a particular user
-// exports.allByUser = function(user, cb) {
-//     db.fetch({user: user}, cb)
-// }
+module.exports = new Sabd();

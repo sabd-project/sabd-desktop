@@ -1,9 +1,9 @@
 
 function ready(fn) {
     if (document.readyState != 'loading'){
-        fn();
+        startup();
     } else {
-        document.addEventListener('DOMContentLoaded', fn);
+        document.addEventListener('DOMContentLoaded', startup);
     }
 }
 
@@ -13,4 +13,11 @@ const ESC_KEY = 27;
 
 function startup(){
     "use strict";
+
+    $('input#search').onkeydown(function(e){
+
+        if ($(e).keyCode===ENTER_KEY){
+            console.log(e);
+        }
+    });
 }

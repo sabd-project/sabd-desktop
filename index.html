@@ -109,12 +109,18 @@
 </body>
 
 <script id="tpl-search" type="text/x-handlebars-template">
-    {{#each items}}
+    {{#each object}}
     <div class="sabd" data-id="{{_id}}">
         <h3>{{gurmukhi}}</h3>
-        <div class="ang">{{ang}}</div>
+        <div class="ang">{{ang_id}}</div>
     </div>
     {{/each}}
 </script>
-
+<script id="tpl-debug" type="text/x-handlebars-template">
+    {{#each array as |value key|}}
+    {{#each child as |childValue childKey|}}
+    {{key}} - {{childKey}}. {{childValue}}
+    {{/each}}
+    {{/each}}
+</script>
 </html>

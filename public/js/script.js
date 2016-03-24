@@ -50,9 +50,11 @@ function search(value, searchType) {
 
 function renderResults(data) {
     console.debug(data);
-    var source = $("#tpl-search").html();
+    var source = $("#tpl-debug").html();
     var template = Handlebars.compile(source);
-    console.log(template);
+    for (var sabd in data){
+        console.log(sabd);
+    }
     var html = template(data);
     console.log(html)
 }

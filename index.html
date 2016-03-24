@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Sabd Desktop</title>
     <link href="public/css/photon.min.css" rel="stylesheet" type="text/css">
-    <script src="public/js/jquery-2.2.2.min.js"></script>
+    <script src="public/js/jquery-2.2.2.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="public/js/handlebars-v4.0.5.js"></script>
 </head>
 <body>
 <div class="window">
@@ -43,15 +44,15 @@
         <div class="pane-group">
             <div class="pane-sm sidebar">
 
-                <form>
-                    <div class="form-group">
-                        <label>Search</label>
-                        <input id='search' type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-form btn-primary">Search</button>
-                    </div>
-                </form>
+
+                <div class="form-group">
+                    <label>Search</label>
+                    <input id='search' type="text" class="form-control" placeholder="Search">
+                </div>
+                <div class="form-actions">
+                    <button id="searchButton" class="btn btn-form btn-primary" disabled>Search</button>
+                </div>
+
             </div>
             <div class="pane">
 
@@ -105,6 +106,15 @@
     </div>
 </div>
 <script src="public/js/script.js"></script>
-
 </body>
+
+<script id="tpl-search" type="text/x-handlebars-template">
+    {{#each result}}
+    <div class="sabd" data-id="{{_id}}">
+        <h3>{{gurmukhi}}</h3>
+        <div class="ang">{{ang}}</div>
+    </div>
+    {{/each}}
+</script>
+
 </html>

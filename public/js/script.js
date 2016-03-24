@@ -52,6 +52,7 @@ function renderResults(data) {
     console.debug(data);
     var source = $("#tpl-search").html();
     var template = Handlebars.compile(source);
+    console.log(template);
     var html = template(data);
     console.log(html)
 }

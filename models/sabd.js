@@ -28,9 +28,10 @@ Sabd.prototype.search = function (type, query) {
             if (err) {
                 reject(err);
             }
-            fulfill(rows);
+         
+            fulfill({'results':rows});
         });
     });
-}
+};
 
 module.exports = new Sabd();

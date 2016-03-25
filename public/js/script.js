@@ -12,6 +12,8 @@ window.onload = function () {
     var searchButton = $('button#searchButton');
     var searchType = 'fls';
 
+
+
     searchField.keydown(function (e) {
 
         if (searchField.val().length > 0) {
@@ -43,18 +45,20 @@ function search(value, searchType) {
     jQuery.getJSON({
         url: API_URL + "/search/" + searchType + "/" + value,
         success: function (data) {
-            renderResults(data);
+            renderSearchResults(data);
         }
     });
 }
 
-function renderResults(data) {
-    console.debug(data);
-    var source = $("#tpl-debug").html();
-    var template = Handlebars.compile(source);
-    for (var sabd in data){
-        console.log(sabd);
-    }
-    var html = template(data);
-    console.log(html)
+function renderSearchResults(data) {
+    //pre-compile dust.js templates
+    let template = document.getElementById('tpl-search-results').textContent;
+    var compiled = dust.compile(template, 'search-results');
+    dust.loadSource(compiled);   // Register the template with Dust
+
+    // Render the search results template
+    dust.render('search-results', data, function (err, out) {
+        //TODO catch err
+        document.getElementById('results').innerHTML = out;
+    });
 }

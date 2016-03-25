@@ -4,25 +4,24 @@ Electron based Gurmukhi search application
 
 ## TODO 
 - [x] Bootstrapping
-- [ ] Config for dev and prod
 - [ ] Front end spec
 - [ ] Back end spec and api for search
-- [ ] Back end models
-- [ ] Database import
-- [ ] Webfont install
+- [x] Back end models
+- [x] Database import
+- [x] Webfont install
 - [ ] Transliteration engine
 - [ ] User preferences save
 - [ ] Multiplatform builds
-- [ ] Multiple 
 - [ ] Front end felt tip fairying
 - [ ] Project web page
-- [ ] Autoupdaes
+- [ ] Autoupdates
+- [ ] Gurmukhi keyboard for search
 - [ ] Ping data back to Keen for platform usage monitoring
 - [ ] Internationalisation
 - [ ] Get icons created for distribution
 
 ## HTTP API
-Web server sits on port 9100 (may need to detect if busy and pick another)
+Web server sits on port 9103 (may need to detect if busy and pick another)
 
 ###  GET /search/{type}/{query}
 
@@ -54,4 +53,4 @@ eg
 
 Get a particular sabd in JSON for rendering 
 
-curl localhost:9102/search/fls/hhAh -sabd id 2
+curl localhost:9103/search/fls/hhAh -sabd id 2

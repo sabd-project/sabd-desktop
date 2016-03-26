@@ -5,21 +5,21 @@ html(lang="en")
         link(href='/css/fonts.css', rel='stylesheet')
         link(href='/css/reveal.css', rel='stylesheet')
         link(href='/css/themes/black.css', rel='stylesheet')
-
+        link(href='/css/style.css', rel='stylesheet')
         script(src='/js/reveal.js')
 
     body
         p(onclick="toggleElement(document.getElementById('gurmukhi_navigator'))") navIgator
         #gurmukhi_navigator(class="navigator", style="display:none")
             each line in sabd
-                ul.navigator_line(data-line_number="12")=line.gurmukhi
+                ul.navigator_line.gurmukhi(data-line_number="12")=line.gurmukhi
 
         .reveal
             .slides
                 each line in sabd
                     section(data-transition-speed="fast", data-line-id="line.line_id")
-                        p.gurmukhi=line.gurmukhi
-                        p.transliteration=line.translation
+                        p.gurmukhi.viewGurmukhi=line.gurmukhi
+                        p.transliteration=line.transliteration
                         p.english=line.english_ssk
         #debug
             each line in sabd

@@ -9,11 +9,11 @@
 }
 
 input#search {
-    font-family: GurbaniAkharHeavyRegular;
+    font-family: GurbaniAkharHeavyRegular !important;
 }
 
 .gurmukhi {
-    font-family: GurbaniAkharHeavyRegular;
+    font-family: GurbaniAkharHeavyRegular !important;
 }
 
 div#debug {

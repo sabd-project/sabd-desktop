@@ -11,7 +11,7 @@ html(lang="en")
 
     body
         p(onclick="toggleElement(document.getElementById('gurmukhi_navigator'))") navIgator
-        #gurmukhi_navigator(class="navigator", style="display:none")
+        #gurmukhi_navigator.navigator(style="display:none")
             each line in sabd
                 ul.navigator_line.gurmukhi(data-line_number="12")=line.gurmukhi
 
@@ -20,8 +20,8 @@ html(lang="en")
                 each line in sabd
                     section(data-transition-speed="fast", data-line-id="line.line_id")
                         p.gurmukhi.viewGurmukhi=line.gurmukhi
-                        p.transliteration=line.transliteration
-                        p.english=line.english_ssk
+                        p.transliteration.viewTransliteration=line.transliteration
+                        p.translation.viewTranslation=line.english_ssk
         #debug
             each line in sabd
                 li.gurmukhi=line.gurmukhi

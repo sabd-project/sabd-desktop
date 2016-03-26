@@ -52,5 +52,6 @@ eg
 ###  GET /sabd/{id}
 
 Get a particular sabd in JSON for rendering 
-
+```
 curl localhost:9103/search/fls/hhAh -sabd id 2
+```

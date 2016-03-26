@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Sabd Desktop</title>
     <link href="public/css/photon.min.css" rel="stylesheet" type="text/css">
-    <link href="public/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="public/css/fonts.css" rel="stylesheet" type="text/css">
     <script src="public/js/jquery-2.2.2.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <script src="public/js/dust-full.min.js"></script>
 </head>
@@ -79,11 +79,11 @@
 <script src="public/js/script.js"></script>
 <script id="tpl-search-results" type="text/dust">
         {#results}
-        <div class="sabd" data-id="{_id}">
+        <div class="sabd" data-id="{_id}" data-shabad_no="{shabad_no}" data-ang="{ang_id}>
             <p class="gurmukhi">{gurmukhi}</p>
-            <div class="ang">{ang_id}</div>
         </div>
         {/results}
+
 
 </script>
 

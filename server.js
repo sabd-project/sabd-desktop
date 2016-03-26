@@ -1,15 +1,22 @@
 'use strict';
-const PORT = 9102;
+const PORT = 9103;
 
 //http://timjrobinson.com/how-to-structure-your-nodejs-models-2/
 
 var express = require('express');
-var app = express();
 var sqlite3 = require("sqlite3").verbose();
 
-var db=new sqlite3.Database('./data/iGurbani.sqlite');
+var db = new sqlite3.Database('./data/iGurbani.sqlite');
 var sabd = require('./models/sabd');
 sabd.db = db;
+
+var app = express();
+/**
+ * middleware
+ */
+app.set('view engine', 'jade');
+//server static files which shares the same dir as the electron front end
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     res.send('Api for Sabd Desktop');
@@ -48,17 +55,30 @@ app.get('/search/:type/:query', function (req, res) {
 
 });
 
-app.get('/sabd/:id', function (req, res) {
+app.get('/sabd/:sabdNumber', function (req, res) {
+    console.log('Getting Sabd number', req.params.sabdNumber);
 
-
-    res.send('Get Sabd ' + req.params.id);
+    sabd.getSabd(req.params.sabdNumber)
+        .then(
+            function (data) {
+                if (!data) {
+                    throw new Error('Sabd response was empty');
+                }
+                console.log('Rendering Sabd', req.params.sabdNumber);
+                res.render('sabd', data);
+            })
+        .catch(
+            function (err) {
+                console.error('Error getting Sabd', err);
+                res.status(400).json({'search error': err.message})
+            });
 });
 
 app.listen(PORT, function () {
     console.log('Sabd REST Api listening on TCP:' + PORT);
 });
 
-process.on('exit', function() {
+process.on('exit', function () {
     // Add shutdown logic here.
     db.close();
     console.log('Shutdown');

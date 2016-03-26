@@ -28,8 +28,31 @@ Sabd.prototype.search = function (type, query) {
             if (err) {
                 reject(err);
             }
-         
-            fulfill({'results':rows});
+
+            fulfill({'results': rows});
+        });
+    });
+};
+
+/**
+ * find a sabad based on the shabad_number
+ * @param sabdNumber
+ * @returns {Promise}
+ */
+Sabd.prototype.getSabd = function (sabdNumber) {
+
+    var db = this.db;
+    var sql = "SELECT _id, shabad_no, source_id, ang_id, writer_id, raag_id, gurmukhi, english_ssk, transliteration " +
+        "FROM shabad where shabad_no=?" +
+        "ORDER BY _id";
+
+    return new Promise(function (fulfill, reject) {
+        db.all(sql, sabdNumber, function (err, rows) {
+            if (err) {
+                reject(err);
+            }
+
+            fulfill({'sabd': rows});
         });
     });
 };

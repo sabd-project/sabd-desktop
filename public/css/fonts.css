@@ -1,0 +1,21 @@
+/* Embed gurbaniwebthick font */
+@font-face {
+    font-family: 'GurbaniAkharHeavyRegular';
+    src: url('../fonts/gurakh_h-webfont.svg#GurbaniAkharHeavyRegular') format('svg'),
+    url('../fonts/gurakh_h-webfont.ttf') format('truetype'),
+    url('../fonts/gurakh_h-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input#search {
+    font-family: GurbaniAkharHeavyRegular;
+}
+
+p.gurmukhi {
+    font-family: GurbaniAkharHeavyRegular;
+}
+
+div#debug {
+    font-size: x-small;
+}

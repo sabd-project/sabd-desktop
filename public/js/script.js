@@ -3,7 +3,8 @@
 var app = app || {};
 const ENTER_KEY = 13;
 const ESC_KEY = 27;
-const API_URL = "http://localhost:9102";
+const API_URL = "http://localhost:9103";
+var open = require("open");
 
 window.onload = function () {
 
@@ -11,7 +12,6 @@ window.onload = function () {
     var searchField = $('input#search');
     var searchButton = $('button#searchButton');
     var searchType = 'fls';
-
 
 
     searchField.keydown(function (e) {
@@ -45,11 +45,17 @@ function search(value, searchType) {
     jQuery.getJSON({
         url: API_URL + "/search/" + searchType + "/" + value,
         success: function (data) {
-            renderSearchResults(data);
+            if (data) {
+                renderSearchResults(data);
+            }
         }
     });
 }
 
+/**
+ * render the search results into html and inject into the DOM
+ * @param data
+ */
 function renderSearchResults(data) {
     //pre-compile dust.js templates
     let template = document.getElementById('tpl-search-results').textContent;
@@ -60,5 +66,18 @@ function renderSearchResults(data) {
     dust.render('search-results', data, function (err, out) {
         //TODO catch err
         document.getElementById('results').innerHTML = out;
+        //add onclick listener to each sabd returned
+        $('div.sabd').click(function (el) {
+            let sabdNumber = $(this).data('shabad_no');
+            if (sabdNumber) {
+                //connect to api and get browser to open sabd url
+                open(API_URL + "/sabd/" + sabdNumber);
+            }
+            else {
+                alert('cannot find that sabad ' + sabdNumber);
+            }
+        });
+
     });
 }
+

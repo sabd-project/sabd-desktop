@@ -64,6 +64,7 @@ app.get('/sabd/:sabdNumber', function (req, res) {
                 if (!data) {
                     throw new Error('Sabd response was empty');
                 }
+                //console.log(data);
                 console.log('Rendering Sabd', req.params.sabdNumber);
                 res.render('sabd', data);
             })

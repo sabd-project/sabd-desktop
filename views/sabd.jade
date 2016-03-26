@@ -2,12 +2,40 @@ doctype html
 html(lang="en")
     head
         title= pageTitle
-        style
+        link(href='/css/reveal.css', rel='stylesheet')
+        link(href='/css/themes/black.css', rel='stylesheet')
+        link(href='/css/fonts.css', rel='stylesheet')
+        script(src='/js/reveal.js')
         script(type='text/javascript').
-            if (foo) {
-                bar(1 + 5)
+            document.addEventListener('DOMContentLoaded', function () {
+
+                //get each navigator line and attach an event to it so it changes slide on click
+                var elements = document.querySelectorAll('ul.navigator_line');
+                Array.prototype.forEach.call(elements, function (el, i) {
+                    var line_number = el.dataset.line_number;
+                    el.addEventListener('click', function (element) {
+                        Reveal.slide(line_number);
+                        document.getElementById('gurmukhi_navigator').style.display = 'none';
+                    });
+                });
+
+            });
+
+            function toggleElement(el) {
+                if (el.style.display == '') {
+                    el.style.display = 'none';
+                }
+                else {
+                    el.style.display = ''
+                }
             }
+
     body
+        p(onclick="toggleElement(document.getElementById('gurmukhi_navigator'))") navIgator
+        #gurmukhi_navigator(class="navigator", style="display:none")
+            ul(class="navigator_line", data-line_number="12") 12
+
+
         h1 Jade - node template engine
         #container.col
             if youAreUsingJade
@@ -19,3 +47,5 @@ html(lang="en")
                 templating language with a
                 strong focus on performance
                 and powerful features.
+        #debug
+            - console.log(sabd)

@@ -1,51 +1,60 @@
 doctype html
 html(lang="en")
     head
-        title= pageTitle
+        title="Sabd Desktop Output"
+        link(href='/css/fonts.css', rel='stylesheet')
         link(href='/css/reveal.css', rel='stylesheet')
         link(href='/css/themes/black.css', rel='stylesheet')
-        link(href='/css/fonts.css', rel='stylesheet')
+
         script(src='/js/reveal.js')
-        script(type='text/javascript').
-            document.addEventListener('DOMContentLoaded', function () {
-
-                //get each navigator line and attach an event to it so it changes slide on click
-                var elements = document.querySelectorAll('ul.navigator_line');
-                Array.prototype.forEach.call(elements, function (el, i) {
-                    var line_number = el.dataset.line_number;
-                    el.addEventListener('click', function (element) {
-                        Reveal.slide(line_number);
-                        document.getElementById('gurmukhi_navigator').style.display = 'none';
-                    });
-                });
-
-            });
-
-            function toggleElement(el) {
-                if (el.style.display == '') {
-                    el.style.display = 'none';
-                }
-                else {
-                    el.style.display = ''
-                }
-            }
 
     body
         p(onclick="toggleElement(document.getElementById('gurmukhi_navigator'))") navIgator
         #gurmukhi_navigator(class="navigator", style="display:none")
-            ul(class="navigator_line", data-line_number="12") 12
+            each line in sabd
+                ul.navigator_line(data-line_number="12")=line.gurmukhi
 
-
-        h1 Jade - node template engine
-        #container.col
-            if youAreUsingJade
-                p You are amazing
-            else
-                p Get on it!
-            p.
-                Jade is a terse and simple
-                templating language with a
-                strong focus on performance
-                and powerful features.
+        .reveal
+            .slides
+                each line in sabd
+                    section(data-transition-speed="fast", data-line-id="line.line_id")
+                        p.gurmukhi=line.gurmukhi
+                        p.transliteration=line.translation
+                        p.english=line.english_ssk
         #debug
-            - console.log(sabd)
+            each line in sabd
+                li.gurmukhi=line.gurmukhi
+
+    script(type='text/javascript').
+        document.addEventListener('DOMContentLoaded', function () {
+
+            //get each navigator line and attach an event to it so it changes slide on click
+            var elements = document.querySelectorAll('ul.navigator_line');
+            Array.prototype.forEach.call(elements, function (el, i) {
+                var line_number = el.dataset.line_number;
+                el.addEventListener('click', function (element) {
+                    Reveal.slide(line_number);
+                    document.getElementById('gurmukhi_navigator').style.display = 'none';
+                });
+            });
+
+        });
+
+        function toggleElement(el) {
+            if (el.style.display == '') {
+                el.style.display = 'none';
+            }
+            else {
+                el.style.display = ''
+            }
+        }
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide' // none/fade/slide/convex/concave/zoom
+        });

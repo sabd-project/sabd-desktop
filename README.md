@@ -5,7 +5,8 @@ Electron based Gurmukhi search application
 ## TODO 
 - [x] Bootstrapping
 - [ ] Front end spec
-- [ ] Back end spec and api for search
+- [ ] Front end implementation
+- [x] Back end spec and api for search
 - [x] Back end models
 - [x] Database import
 - [x] Webfont install
@@ -18,7 +19,7 @@ Electron based Gurmukhi search application
 - [ ] Gurmukhi keyboard for search
 - [ ] Ping data back to Keen for platform usage monitoring
 - [ ] Internationalisation
-- [ ] Get icons created for distribution
+- [ ] Get applications icons created for distribution
 
 ## HTTP API
 Web server sits on port 9103 (may need to detect if busy and pick another)

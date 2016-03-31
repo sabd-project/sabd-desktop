@@ -1,0 +1,39 @@
+/*search view*/
+.resultGurmukhi {
+    font-size: large;
+}
+
+div.sabd :hover {
+    background-color: #E3E3E3;
+    cursor: pointer;
+}
+
+/*sabd view*/
+div.navigator {
+    position: fixed;
+    width: 310px;
+    height: 600px;
+    z-index: 99;
+    left: 1px;
+    overflow: auto;
+}
+
+.viewGurmukhi {
+    text-align: center;
+    font-size: 250% !important;
+    padding-bottom: 15px
+}
+
+.viewTransliteration {
+    text-align: center;
+    font-size: 160% !important;
+    padding-bottom: 15px;
+    color: aquamarine;
+}
+
+.viewTranslation {
+    text-align: center;
+    font-size: 100% !important;
+    padding-bottom: 15px;
+    color:skyblue;
+}

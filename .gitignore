@@ -49,6 +49,10 @@ crashlytics.properties
 crashlytics-build.properties
 
 
+# Node
+node_modules
+/node_modules
+
 ### Linux ###
 *~
 
@@ -57,4 +61,3 @@ crashlytics-build.properties
 
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
-

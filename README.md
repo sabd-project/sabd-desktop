@@ -20,6 +20,9 @@ Electron based Gurmukhi search application
 - [ ] Ping data back to Keen for platform usage monitoring
 - [ ] Internationalisation
 - [ ] Get applications icons created for distribution
+- [ ] installer for windows
+- [ ] installer for linux
+- [ ] installer for osx
 
 ## HTTP API
 Web server sits on port 9103 (may need to detect if busy and pick another)

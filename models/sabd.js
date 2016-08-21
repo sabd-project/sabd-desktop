@@ -24,13 +24,14 @@ Sabd.prototype.search = function (type, query) {
         "FROM shabad where first_ltr_start like ?";
 
     return new Promise(function (fulfill, reject) {
-        db.all(sql, searchAsciiCodes, function (err, rows) {
-            if (err) {
-                reject(err);
-            }
+        db.all(sql, searchAsciiCodes)
+          .then(function (err, rows) {
+              if (err) {
+                  reject(err);
+              }
 
-            fulfill({'results': rows});
-        });
+              fulfill({'results': rows});
+          });
     });
 };
 

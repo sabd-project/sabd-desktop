@@ -8,7 +8,6 @@ var db = require("sqlite");
 
 var sabd = require('./models/sabd');
 sabd.db = db;
-console.log(sabd);
 
 var app = express();
 /**

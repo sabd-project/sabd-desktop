@@ -6,8 +6,8 @@
 # Source our vars
 . "$PWD/setup-x64.sh"
 
-# Make dir
-mkdir ~/.electron-gyp
+# Make electron build dir if not exists
+mkdir -p ~/.electron-gyp
 
 # Run
 HOME=~/.electron-gyp npm install "$@"

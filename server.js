@@ -4,9 +4,10 @@ const PORT = 9103;
 //http://timjrobinson.com/how-to-structure-your-nodejs-models-2/
 
 var express = require('express');
-var db = require('sqlite3').verbose();
+var sqlite3 = require("sqlite3").verbose();
 
 //sabd model
+var db = new sqlite3.Database('./data/iGurbani.sqlite');
 var sabd = require('./models/sabd');
 sabd.db = db;
 

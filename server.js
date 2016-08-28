@@ -4,8 +4,9 @@ const PORT = 9103;
 //http://timjrobinson.com/how-to-structure-your-nodejs-models-2/
 
 var express = require('express');
-var db = require("sqlite");
+var db = require('sqlite3').verbose();
 
+//sabd model
 var sabd = require('./models/sabd');
 sabd.db = db;
 
@@ -74,13 +75,10 @@ app.get('/sabd/:sabdNumber', function (req, res) {
             });
 });
 
-db.open('./data/iGurbani.sqlite', { Promise })
-  .catch(err => console.error(err.stack))
-  .then(() => {
+
     app.listen(PORT, function () {
       console.log('Sabd REST Api listening on TCP:' + PORT);
     });
-  })
 
 process.on('exit', function () {
     // Add shutdown logic here.

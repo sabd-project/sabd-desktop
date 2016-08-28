@@ -1,13 +1,15 @@
-"use strict";
+'use strict';
+
 /**
  * constructor
- * inject in db
+ * inject in db conn
  */
 function Sabd() {
     var db;
 }
 
 Sabd.prototype.search = function (type, query) {
+
     let searchAsciiCodes = '';
 
     for (let i = 0, len = query.length; i < len; i++) {
@@ -28,6 +30,7 @@ Sabd.prototype.search = function (type, query) {
           .then(function (err, rows) {
               if (err) {
                   reject(err);
+                  console.log(err);
               }
 
               fulfill({'results': rows});

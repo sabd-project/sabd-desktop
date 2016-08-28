@@ -6,6 +6,7 @@ const ESC_KEY = 27;
 const API_URL = "http://localhost:9103";
 var open = require("open");
 
+//on window load
 window.onload = function () {
 
     //bind to search field and button
@@ -54,6 +55,7 @@ function search(value, searchType) {
 
 /**
  * render the search results into html and inject into the DOM
+ * @TODO catch errors
  * @param data
  */
 function renderSearchResults(data) {
@@ -61,7 +63,7 @@ function renderSearchResults(data) {
     let template = document.getElementById('tpl-search-results').textContent;
     var compiled = dust.compile(template, 'search-results');
     dust.loadSource(compiled);   // Register the template with Dust
-
+    console.log(dust);
     // Render the search results template
     dust.render('search-results', data, function (err, out) {
         //TODO catch err

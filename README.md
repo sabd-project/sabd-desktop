@@ -65,4 +65,4 @@ curl localhost:9103/search/fls/hhAh -sabd id 2
 
 ### Example 1
 Searching for *Har Jio Kirpa Karo*
-![Example 1 - Har Jio Kirpa Karo](/docs/example1.pngraw=true "Har Jio Kirpa Karo")
+![Example 1 - Har Jio Kirpa Karo](/docs/example1.png&raw=true "Har Jio Kirpa Karo")

@@ -1,0 +1,23 @@
+extends: airbnb
+plugins:
+  - react
+  - jsx-a11y
+  - import
+env:
+  amd: true
+  browser: true
+  es6: true
+  jquery: true
+  node: true
+  mocha: true
+
+
+# Rules
+rules:
+  # From plugins
+  import/no-unresolved: [2, { ignore: ['electron'] }]
+  # Everything else
+  arrow-body-style: 0
+  comma-dangle: 0
+  no-console: 0
+  semi: 1

@@ -5,7 +5,6 @@ import copy from 'gulp-contrib-copy';
 import webpack from 'gulp-webpack';
 
 // Config files
-import electronConfig from './webpack.config.electron.js';
 
 // Tasks
 /**

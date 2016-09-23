@@ -1,7 +1,6 @@
-import express from 'express';
-import { verbose as sqlVerbose } from 'sqlite3';
-// import sabd from './models/sabd';
-const sabd = {};
+const express = require('express');
+const { sqlVerbose } = require('sqlite3');
+const sabd = require('./models/sabd');
 const sqlite3 = sqlVerbose();
 const PORT = 9103;
 

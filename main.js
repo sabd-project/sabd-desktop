@@ -1,11 +1,12 @@
-import electron from 'electron';
-// Start built in web server
-import './server';
+const electron = require('electron');
 
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
+
+// Start built in web server
+require('./server');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

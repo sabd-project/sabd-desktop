@@ -1,13 +1,13 @@
 const express = require('express');
-const { sqlVerbose } = require('sqlite3');
+const { join } = require('path');
+const sqlite3 = require('sqlite3');
 const sabd = require('./models/sabd');
-const sqlite3 = sqlVerbose();
 const PORT = 9103;
 
 // http://timjrobinson.com/how-to-structure-your-nodejs-models-2/
 
 // Sabd model
-const db = new sqlite3.Database('./data/iGurbani.sqlite');
+const db = new sqlite3.Database(join(__dirname, 'data/iGurbani.sqlite'));
 sabd.db = db;
 
 // Init app
@@ -17,8 +17,9 @@ const app = express();
  * Middleware
  */
 app.set('view engine', 'jade');
+app.set('views', join(__dirname, 'views'));
 // Server static files which shares the same dir as the electron front end
-app.use(express.static('public'));
+app.use(express.static(join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.send('Api for Sabd Desktop');

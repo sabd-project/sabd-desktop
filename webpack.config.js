@@ -1,7 +1,17 @@
-// Base webpack config
+// Webpack config
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
+  context: path.join(__dirname, 'app'),
+
+  entry: ['../src/main.jsx'],
+
+  output: {
+    path: path.join(__dirname, 'app', 'browser'),
+    filename: 'bundle.js'
+  },
+
   module: {
     loaders: [
       {

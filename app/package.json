@@ -2,7 +2,7 @@
   "name": "sabd-desktop",
   "version": "0.1.0",
   "description": "Desktop Based Sabd Application",
-  "main": "browser.js",
+  "main": "browser/main.js",
   "scripts": {
     "start": "electron browser.js",
     "test": "echo \"Error: no test specified\" && exit 1",

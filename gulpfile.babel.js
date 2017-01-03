@@ -8,10 +8,10 @@ import webpack from 'gulp-webpack';
 
 // Tasks
 /**
- * Clean out app/
+ * Clean out build/
  */
-gulp.task('clean:app', () => {
-  return gulp.src('app', { read: false })
+gulp.task('clean:build', () => {
+  return gulp.src('build', { read: false })
     .pipe(clean());
 });
 
@@ -19,7 +19,7 @@ gulp.task('clean:app', () => {
  * Clean out all dirs that need doing
  */
 gulp.task('clean', [
-  'clean:app'
+  'clean:build'
 ]);
 
 /**
